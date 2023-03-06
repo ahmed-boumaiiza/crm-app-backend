@@ -1,19 +1,17 @@
 package com.crm.app.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.util.*;
 
 @Entity
 @DynamicInsert
 @DynamicUpdate
 @Data
-@Table(name="activity")
+@Table(name = "activity")
 public class Activity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,13 +29,10 @@ public class Activity {
     @Column(name = "note")
     private String note;
 
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            },
-            mappedBy = "activities")
-    @JsonIgnore
-    private Set<Contact> participants = new HashSet<>();
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @JoinTable(name = "contact_activitiy",
+            joinColumns = { @JoinColumn(name = "activity_id") },
+            inverseJoinColumns = { @JoinColumn(name = "contact_id") })
+    private List<Contact> participants;
 
 }

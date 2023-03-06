@@ -23,10 +23,8 @@ public class Contact {
     private Integer id;
 
     @Column(name = "first_name")
-    @NotBlank(message = "This field should be not empty")
     private String firstName;
     @Column(name = "last_name")
-    @NotBlank(message = "This field should be not empty")
     private String lastName;
     @Column(name = "company")
     private String company;
@@ -54,19 +52,5 @@ public class Contact {
 
     @Column(name = "zip_code")
     private String zipCode;
-    public void addActivity(Activity activity) {
-        this.activities.add(activity);
-        activity.getParticipants().add(this);
-    }
-
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            })
-    @JoinTable(name = "contact_activitiy",
-            joinColumns = { @JoinColumn(name = "contact_id", nullable = false) },
-            inverseJoinColumns = { @JoinColumn(name = "activity_id", nullable = false) })
-    private Set<Activity> activities = new HashSet<>();
 
 }

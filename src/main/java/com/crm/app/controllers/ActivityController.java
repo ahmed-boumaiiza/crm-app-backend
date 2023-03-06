@@ -32,22 +32,17 @@ public class ActivityController {
         return new ResponseEntity<>(activity,HttpStatus.OK);
     }
 
-//    @PostMapping("/create")
-//    public ResponseEntity<Activity> createActivity(@Valid @RequestBody Activity activity) {
-//        Activity newActivity = activityService.createActivity(activity);
-//        log.info("pa{}",activity.getParticipants());
-//        return new ResponseEntity<>(newActivity,HttpStatus.CREATED);
-//    }
     @PostMapping("/create")
-    public ResponseEntity<String> createActivity(@Valid @RequestBody Map<String,?> activity) {
-        return activityService.createActivity(activity);
+    public ResponseEntity<Activity> createActivity(@RequestBody Activity activity) {
+        Activity newActivity = activityService.createActivity(activity);
+        return new ResponseEntity<>(newActivity,HttpStatus.CREATED);
     }
+
 
     @PutMapping(path="/update/{id}")
     public ResponseEntity<Activity> updateActivity(
-            @Valid
             @PathVariable("id") Integer id,
-            @RequestBody Map<String, String> newActivity) {
+            @RequestBody Activity newActivity) {
         Activity updatedActivity = activityService.updateActivity(id,newActivity);
         return new ResponseEntity<>(updatedActivity,HttpStatus.OK);
     }
