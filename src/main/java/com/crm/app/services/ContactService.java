@@ -33,7 +33,7 @@ public class ContactService {
                 .orElseThrow(()-> new IllegalStateException(Constants.CONTACT_NOT_FOUND));
     }
 
-/*
+
     public ResponseEntity<String> createContact(Map<String, String> contactRequest) {
         try {
             if (validateContactStructure(contactRequest)) {
@@ -53,13 +53,13 @@ public class ContactService {
         }
         return Generics.getResponseEntity(Constants.SOMETHING_WENT_WRONG,HttpStatus.INTERNAL_SERVER_ERROR);
     }
-*/
 
+/*
     public Contact createContact(Contact contact) {
         contactRepository.save(contact);
         return contact;
     }
-
+*/
     /*
     public ResponseEntity<String> updateContact(Integer id, Map<String, String> newContactRequest) {
 
@@ -88,7 +88,7 @@ public class ContactService {
     public void deleteContact(Integer id) {
         contactRepository.deleteById(id);
     }
-/*
+
     public Boolean validateContactStructure(Map<String, String> contactRequest){
         if(contactRequest.containsKey("firstName") && contactRequest.containsKey("lastName")
                 && contactRequest.containsKey("email")){
@@ -113,7 +113,7 @@ public class ContactService {
         contact.setZipCode(contactRequest.get("zipCode"));
         return contact;
     }
-    */
+
 
     private Contact updateContactFromMap(Contact contact,Map<String,String> contactRequest) {
         contact.setFirstName(contactRequest.get("firstName"));

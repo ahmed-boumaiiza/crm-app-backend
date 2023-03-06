@@ -36,14 +36,9 @@ public class Contact {
     @Column(name = "contact_owner")
     private String contactOwner;
     @Column(name = "email",unique = true)
-    @Email(regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}",
-            message = "Email format is invalid",
-            flags = Pattern.Flag.CASE_INSENSITIVE)
     private String email;
 
     @Column(name = "phone")
-    @Pattern(regexp = "^\\+\\d{3}\\s\\d{8}$",
-            message = "Phone number format is invalid")
     private String phone;
     @Column(name = "address")
     private String address;
@@ -59,6 +54,10 @@ public class Contact {
 
     @Column(name = "zip_code")
     private String zipCode;
+    public void addActivity(Activity activity) {
+        this.activities.add(activity);
+        activity.getParticipants().add(this);
+    }
 
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {
@@ -66,8 +65,8 @@ public class Contact {
                     CascadeType.MERGE
             })
     @JoinTable(name = "contact_activitiy",
-            joinColumns = { @JoinColumn(name = "contact_id") },
-            inverseJoinColumns = { @JoinColumn(name = "activity_id") })
+            joinColumns = { @JoinColumn(name = "contact_id", nullable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "activity_id", nullable = false) })
     private Set<Activity> activities = new HashSet<>();
 
 }

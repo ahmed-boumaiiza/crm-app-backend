@@ -7,9 +7,7 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @DynamicInsert
@@ -23,10 +21,8 @@ public class Activity {
     private Integer id;
 
     @Column(name = "date")
-    @NotBlank
     private String date;
     @Column(name = "activity_type")
-    @NotBlank
     private String activityType;
 
     @Column(name = "subject")
@@ -42,6 +38,6 @@ public class Activity {
             },
             mappedBy = "activities")
     @JsonIgnore
-    private Set<Contact> contacts = new HashSet<>();
+    private Set<Contact> participants = new HashSet<>();
 
 }

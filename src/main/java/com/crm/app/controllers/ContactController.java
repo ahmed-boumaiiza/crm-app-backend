@@ -32,19 +32,18 @@ public class ContactController {
         Contact contact =  contactService.getContactById(id);
         return new ResponseEntity<>(contact,HttpStatus.OK);
     }
-
+/*
     @PostMapping("/create")
   public ResponseEntity<Contact> createContact(@Valid @RequestBody Contact contact) {
         Contact newContact = contactService.createContact(contact);
         return new ResponseEntity<>(newContact,HttpStatus.CREATED);
     }
-
-    /*
+    */
     @PostMapping("/create")
     public ResponseEntity<String> createContact(@Valid @RequestBody Map<String, String> contact) {
         return contactService.createContact(contact);
     }
-*/
+
 
 @PutMapping(path="/update/{id}")
     public ResponseEntity<Contact> updateContact(
