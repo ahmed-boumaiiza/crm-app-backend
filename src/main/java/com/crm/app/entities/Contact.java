@@ -9,6 +9,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -33,6 +34,10 @@ public class Contact {
 
     @Column(name = "contact_owner")
     private String contactOwner;
+
+//    @Column(name = "contact_owner")
+//    @ManyToOne()
+//    private Contact contactOwner;
     @Column(name = "email",unique = true)
     private String email;
 
@@ -52,5 +57,6 @@ public class Contact {
 
     @Column(name = "zip_code")
     private String zipCode;
+
 
 }

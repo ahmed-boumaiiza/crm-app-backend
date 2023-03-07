@@ -45,16 +45,17 @@ public class ContactService {
 
 
 
-    public Contact updateContact(Integer id, Contact newContactRequest) {
+    public Contact updateContactById(Integer id, Contact newContactRequest) {
         Contact existingContact = getContactById(id);
-        return updateContactFromMap(existingContact, newContactRequest);
+        return updateContact(existingContact, newContactRequest);
     }
 
     public void deleteContact(Integer id) {
+//        contactRepository.deleteContactInJoinTable(id);
         contactRepository.deleteById(id);
     }
 
-    private Contact updateContactFromMap(Contact oldcontact,Contact newContact) {
+    private Contact updateContact(Contact oldcontact,Contact newContact) {
         oldcontact.setFirstName(newContact.getFirstName());
         oldcontact.setLastName(newContact.getLastName());
         oldcontact.setCompany(newContact.getCompany());

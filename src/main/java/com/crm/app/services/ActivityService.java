@@ -28,21 +28,20 @@ public class ActivityService {
     }
 
     public Activity createActivity(Activity activity) {
-        log.info("create activity{}", activity);
         return activityRepository.save(activity);
     }
 
 
 
-    public Activity updateActivity(Integer id, Activity newActivity) {
+    public Activity updateActivityById(Integer id, Activity newActivity) {
         Activity existingActivity = getActivityById(id);
-        return updateActivityFromMap(existingActivity, newActivity);
+        return updateActivity(existingActivity, newActivity);
     }
     public void deleteActivity(Integer id) {
         activityRepository.deleteById(id);
     }
 
-    private Activity updateActivityFromMap(Activity oldactivity,Activity newActivity) {
+    private Activity updateActivity(Activity oldactivity,Activity newActivity) {
         oldactivity.setDate(newActivity.getDate());
         oldactivity.setActivityType(newActivity.getActivityType());
         oldactivity.setSubject(newActivity.getSubject());

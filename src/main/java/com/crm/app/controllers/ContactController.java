@@ -37,7 +37,7 @@ public class ContactController {
     public ResponseEntity<Contact> updateContact(
             @PathVariable("id") Integer id,
             @RequestBody Contact newContact) {
-        Contact updatedContact = contactService.updateContact(id,newContact);
+        Contact updatedContact = contactService.updateContactById(id,newContact);
         return new ResponseEntity<>(updatedContact,HttpStatus.OK);
     }
 

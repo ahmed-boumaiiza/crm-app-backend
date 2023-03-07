@@ -43,7 +43,7 @@ public class ActivityController {
     public ResponseEntity<Activity> updateActivity(
             @PathVariable("id") Integer id,
             @RequestBody Activity newActivity) {
-        Activity updatedActivity = activityService.updateActivity(id,newActivity);
+        Activity updatedActivity = activityService.updateActivityById(id,newActivity);
         return new ResponseEntity<>(updatedActivity,HttpStatus.OK);
     }
 

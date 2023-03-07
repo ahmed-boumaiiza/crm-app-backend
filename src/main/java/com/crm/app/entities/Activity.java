@@ -30,7 +30,7 @@ public class Activity {
     private String note;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JoinTable(name = "contact_activitiy",
+    @JoinTable(name = "contact_activity",
             joinColumns = { @JoinColumn(name = "activity_id") },
             inverseJoinColumns = { @JoinColumn(name = "contact_id") })
     private List<Contact> participants;
