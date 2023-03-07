@@ -12,7 +12,4 @@ import java.util.Optional;
 @Repository
 public interface ContactRepository extends JpaRepository<Contact,Integer> {
 
-//    @Query(value="DELETE FROM contact_activity b WHERE b.contact_id = :id")
-//    public void deleteContactInJoinTable(Integer id);
-
 }

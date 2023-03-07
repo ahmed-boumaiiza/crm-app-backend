@@ -8,8 +8,6 @@ import javax.persistence.*;
 import java.util.*;
 
 @Entity
-@DynamicInsert
-@DynamicUpdate
 @Data
 @Table(name = "activity")
 public class Activity {

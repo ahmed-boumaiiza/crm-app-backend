@@ -13,8 +13,6 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@DynamicInsert
-@DynamicUpdate
 @Data
 @Table(name="contact")
 public class Contact {
@@ -35,9 +33,6 @@ public class Contact {
     @Column(name = "contact_owner")
     private String contactOwner;
 
-//    @Column(name = "contact_owner")
-//    @ManyToOne()
-//    private Contact contactOwner;
     @Column(name = "email",unique = true)
     private String email;
 
@@ -57,6 +52,5 @@ public class Contact {
 
     @Column(name = "zip_code")
     private String zipCode;
-
 
 }

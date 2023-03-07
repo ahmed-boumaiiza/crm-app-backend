@@ -33,7 +33,7 @@ public class ContactController {
         return new ResponseEntity<>(newContact,HttpStatus.CREATED);
     }
 
-@PutMapping(path="/update/{id}")
+    @PutMapping(path="/update/{id}")
     public ResponseEntity<Contact> updateContact(
             @PathVariable("id") Integer id,
             @RequestBody Contact newContact) {
